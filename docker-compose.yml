@@ -27,7 +27,7 @@ services:
 
     volumes:
       - /home/${USER}/docker/files/nginx/data:/data
-      - /home/${USER}/docker/files/letsencrypt:/etc/letsencrypt
+      - /home/${USER}/docker/files/nginx/letsencrypt:/etc/letsencrypt
 
   pihole:
     container_name: pihole
