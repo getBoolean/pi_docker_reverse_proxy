@@ -53,6 +53,7 @@ services:
     volumes:
       - ~/docker/files/pihole/etc-pihole:/etc/pihole
       - ~/docker/files/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+      - ~/docker/files/pihole/etc-lighttpd/conf-enabled/:/etc/lighttpd/conf-enabled/
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
