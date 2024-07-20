@@ -1,0 +1,92 @@
+networks:
+  pihole_network:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
+
+services:
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      # Public HTTP Port
+      - 80:80
+      # Public HTTPS Port
+      - 443:443
+      # Admin Web Port
+      - 81:81
+
+    environment:
+      PUID: 1000
+      PGID: 1000
+
+    volumes:
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    networks:
+      pihole_network:
+        ipv4_address: 192.168.1.199
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
+      - 80:80
+      - 443:443
+
+      # - 5335:5335/tcp
+      # - 5335:5335/udp
+    environment:
+      TZ: "America/Chicago"
+      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
+    volumes:
+      - ./pihole/etc-pihole:/etc/pihole
+      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped
+
+  # unbound:
+  #   container_name: unbound
+  #   image: mvance/unbound:latest
+  #   environment:
+  #     TZ: "America/Chicago"
+  #   volumes:
+  #     - ./config/unbound/records:/opt/unbound/etc/unbound/
+  #     # - ./config/unbound/unbound.conf:/etc/unbound/unbound.conf.d/pi-hole.conf
+  #   ports:
+  #     - 5335:5335/tcp
+  #     - 5335:5335/udp
+  #   restart: unless-stopped
+  #   network_mode: "service:pihole"
+
+  # https://docs.pi-hole.net/guides/vpn/wireguard/server/
+  # wireguard:
+  #   image: lscr.io/linuxserver/wireguard:latest
+  #   container_name: wireguard
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - SYS_MODULE #optional
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=America/Chicago
+  #     # - SERVERURL=wireguard.domain.com
+  #   volumes:
+  #     - ./config/wireguard/etc-wireguard:/etc/wireguard
+  #     - ./config/wireguard/config:/config
+  #     - ./config/wireguard/modules:/lib/modules
+  #   ports:
+  #     - 51820:51820/udp
+  #   sysctls:
+  #     - net.ipv4.conf.all.src_valid_mark=1
+  #   restart: unless-stopped
