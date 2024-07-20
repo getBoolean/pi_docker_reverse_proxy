@@ -42,8 +42,9 @@ services:
       - 80:80
       - 443:443
 
-      # - 5335:5335/tcp
-      # - 5335:5335/udp
+      # Unbound
+      - 5335:5335/tcp
+      - 5335:5335/udp
     environment:
       TZ: "America/Chicago"
       WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
@@ -57,38 +58,35 @@ services:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
 
-  # unbound:
-  #   container_name: unbound
-  #   image: mvance/unbound:latest
-  #   environment:
-  #     TZ: "America/Chicago"
-  #   volumes:
-  #     - ./config/unbound/records:/opt/unbound/etc/unbound/
-  #     # - ./config/unbound/unbound.conf:/etc/unbound/unbound.conf.d/pi-hole.conf
-  #   ports:
-  #     - 5335:5335/tcp
-  #     - 5335:5335/udp
-  #   restart: unless-stopped
-  #   network_mode: "service:pihole"
+  unbound:
+    container_name: unbound
+    image: mvance/unbound:latest
+    environment:
+      TZ: "America/Chicago"
+    volumes:
+      - ~/docker/files/unbound/records:/opt/unbound/etc/unbound/
+      - ~/docker/files/unbound/unbound.conf:/etc/unbound/unbound.conf.d/pi-hole.conf
+    restart: unless-stopped
+    network_mode: "service:pihole"
 
   # https://docs.pi-hole.net/guides/vpn/wireguard/server/
-  # wireguard:
-  #   image: lscr.io/linuxserver/wireguard:latest
-  #   container_name: wireguard
-  #   cap_add:
-  #     - NET_ADMIN
-  #     - SYS_MODULE #optional
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=America/Chicago
-  #     # - SERVERURL=wireguard.domain.com
-  #   volumes:
-  #     - ./config/wireguard/etc-wireguard:/etc/wireguard
-  #     - ./config/wireguard/config:/config
-  #     - ./config/wireguard/modules:/lib/modules
-  #   ports:
-  #     - 51820:51820/udp
-  #   sysctls:
-  #     - net.ipv4.conf.all.src_valid_mark=1
-  #   restart: unless-stopped
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - SERVERURL=wireguard.getboolean.dev
+    volumes:
+      - ~/docker/files/wireguard/etc-wireguard:/etc/wireguard
+      - ~/docker/files/wireguard/config:/config
+      - ~/docker/files/wireguard/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
