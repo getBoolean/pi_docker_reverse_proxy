@@ -13,18 +13,17 @@ services:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
     restart: unless-stopped
-    network_mode: host
-    # ports:
-    #   # Public HTTP Port
-    #   - 80:80
-    #   # Public HTTPS Port
-    #   - 443:443
-    #   # Admin Web Port
-    #   - 81:81
+    ports:
+      # Public HTTP Port
+      - 80:80
+      # Public HTTPS Port
+      - 443:443
+      # Admin Web Port
+      - 81:81
 
-    # environment:
-    #   PUID: 1000
-    #   PGID: 1000
+    environment:
+      PUID: 1000
+      PGID: 1000
 
     volumes:
       - /home/${USER}/docker/files/nginx/data:/data
