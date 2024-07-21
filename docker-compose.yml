@@ -33,7 +33,7 @@ services:
       TZ: "America/Chicago"
       WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
       PIHOLE_DNS_: 127.0.0.1#5335
-      FTLCONF_LOCAL_IPV4: 192.168.1.199
+      FTLCONF_LOCAL_IPV4: 192.168.1.202
     volumes:
       - /home/${USER}/docker/files/pihole/etc-pihole:/etc/pihole
       - /home/${USER}/docker/files/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
