@@ -59,31 +59,31 @@ services:
     restart: unless-stopped
 
   # https://docs.pi-hole.net/guides/vpn/wireguard/server/
-  wireguard:
-    image: linuxserver/wireguard:latest
-    container_name: wireguard
-    cap_add:
-      - NET_ADMIN
-      - SYS_MODULE
-    environment:
-      PUID: 1000
-      PGID: 1000
-      TZ: America/Chicago
-      SERVERURL: piwireguard.getboolean.dev
-      LOG_CONFS: true
-    volumes:
-      - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard/
-      - /home/${USER}/docker/files/wireguard/config:/config
-      - /lib/modules:/lib/modules
-      - /usr/src:/usr/src
-    ports:
-      - 51820:51820/udp
-    sysctls:
-      - net.ipv4.conf.all.src_valid_mark=1
-    restart: unless-stopped
-    depends_on:
-      - unbound
-      - pihole
+  # wireguard:
+  #   image: linuxserver/wireguard:latest
+  #   container_name: wireguard
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - SYS_MODULE
+  #   environment:
+  #     PUID: 1000
+  #     PGID: 1000
+  #     TZ: America/Chicago
+  #     SERVERURL: piwireguard.getboolean.dev
+  #     LOG_CONFS: true
+  #   volumes:
+  #     - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard/
+  #     - /home/${USER}/docker/files/wireguard/config:/config
+  #     - /lib/modules:/lib/modules
+  #     - /usr/src:/usr/src
+  #   ports:
+  #     - 51820:51820/udp
+  #   sysctls:
+  #     - net.ipv4.conf.all.src_valid_mark=1
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - unbound
+  #     - pihole
 
   duckdns:
     image: linuxserver/duckdns:latest
