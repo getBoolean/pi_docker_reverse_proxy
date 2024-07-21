@@ -103,7 +103,7 @@ services:
     volumes:
       - /home/${USER}/docker/files/wireguard-ui/db:/app/db
       - /home/${USER}/docker/files/wireguard-ui/config:/config
-    env_file: .env
+    restart: unless-stopped
 
   duckdns:
     image: linuxserver/duckdns:latest
