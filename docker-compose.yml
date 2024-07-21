@@ -60,20 +60,22 @@ services:
 
   # https://docs.pi-hole.net/guides/vpn/wireguard/server/
   wireguard:
-    image: lscr.io/linuxserver/wireguard:latest
+    image: linuxserver/wireguard:latest
     container_name: wireguard
     cap_add:
       - NET_ADMIN
-      - SYS_MODULE #optional
+      - SYS_MODULE
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Chicago
-      - SERVERURL=wireguard.getboolean.dev
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Chicago
+      SERVERURL: piwireguard.getboolean.dev
+      LOG_CONFS: true
     volumes:
-      - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard
+      - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard/
       - /home/${USER}/docker/files/wireguard/config:/config
-      - /home/${USER}/docker/files/wireguard/modules:/lib/modules
+      - /lib/modules:/lib/modules
+      - /usr/src:/usr/src
     ports:
       - 51820:51820/udp
     sysctls:
