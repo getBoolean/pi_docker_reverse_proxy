@@ -74,8 +74,8 @@ services:
     volumes:
       - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard/
       - /home/${USER}/docker/files/wireguard/config:/config
-      # - /lib/modules:/lib/modules
-      # - /usr/src:/usr/src
+      - /lib/modules:/lib/modules
+      - /usr/src:/usr/src
     ports:
       - 51820:51820/udp
       
