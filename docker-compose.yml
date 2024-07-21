@@ -78,36 +78,12 @@ services:
       - /usr/src:/usr/src
     ports:
       - 51820:51820/udp
-
-      # Wireguard UI
-      - 5000:5000
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
     depends_on:
       - unbound
       - pihole
-
-  wireguard-ui:
-    image: ngoduykhanh/wireguard-ui:latest
-    container_name: wireguard-ui
-    cap_add:
-      - NET_ADMIN
-    network_mode: service:wireguard
-    logging:
-      driver: json-file
-      options:
-        max-size: 50m
-    environment:
-      - WGUI_USERNAME=admin
-      - WGUI_PASSWORD=admin
-      - WGUI_MANAGE_START=true
-      - WGUI_MANAGE_RESTART=true
-      - BIND_ADDRESS=0.0.0.0:5000
-    volumes:
-      - /home/${USER}/docker/files/wireguard-ui/db:/app/db
-      - /home/${USER}/docker/files/wireguard/config:/etc/wireguard
-    restart: unless-stopped
 
   duckdns:
     image: linuxserver/duckdns:latest
