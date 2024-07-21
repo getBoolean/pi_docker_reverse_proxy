@@ -32,7 +32,7 @@ services:
     environment:
       TZ: "America/Chicago"
       WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
-      PIHOLE_DNS_: 127.0.0.1#5335
+      PIHOLE_DNS_: 1.1.1.2;1.0.0.2
       FTLCONF_LOCAL_IPV4: ${PIHOLE_FTLCONF_LOCAL_IPV4}
     volumes:
       - /home/${USER}/docker/files/pihole/etc-pihole:/etc/pihole
@@ -45,18 +45,18 @@ services:
     depends_on:
       - unbound
 
-  unbound:
-    container_name: unbound
-    image: mvance/unbound-rpi:latest
-    environment:
-      TZ: "America/Chicago"
-    ports:
-      - 5335:53/tcp
-      - 5335:53/udp
-    volumes:
-      - /home/${USER}/docker/files/unbound/config:/opt/unbound/etc/unbound/
-      - /home/${USER}/docker/files/unbound/root.hints:/var/lib/unbound/root.hints
-    restart: unless-stopped
+  # unbound:
+  #   container_name: unbound
+  #   image: mvance/unbound-rpi:latest
+  #   environment:
+  #     TZ: "America/Chicago"
+  #   ports:
+  #     - 5335:53/tcp
+  #     - 5335:53/udp
+  #   volumes:
+  #     - /home/${USER}/docker/files/unbound/config:/opt/unbound/etc/unbound/
+  #     - /home/${USER}/docker/files/unbound/root.hints:/var/lib/unbound/root.hints
+  #   restart: unless-stopped
 
   # https://docs.pi-hole.net/guides/vpn/wireguard/server/
   # wireguard:
