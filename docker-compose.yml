@@ -91,8 +91,6 @@ services:
   wireguard-ui:
     image: ngoduykhanh/wireguard-ui:latest
     container_name: wireguard-ui
-    depends_on:
-      - wireguard
     cap_add:
       - NET_ADMIN
     network_mode: service:wireguard
