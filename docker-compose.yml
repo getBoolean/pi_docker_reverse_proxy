@@ -56,32 +56,24 @@ services:
   #     - /home/${USER}/docker/files/unbound/root.hints:/var/lib/unbound/root.hints
   #   restart: unless-stopped
 
-  # https://docs.pi-hole.net/guides/vpn/wireguard/server/
-  # wireguard:
-  #   image: linuxserver/wireguard:latest
-  #   container_name: wireguard
-  #   cap_add:
-  #     - NET_ADMIN
-  #     - SYS_MODULE
-  #   environment:
-  #     PUID: 1000
-  #     PGID: 1000
-  #     TZ: America/Chicago
-  #     SERVERURL: piwireguard.getboolean.dev
-  #     LOG_CONFS: true
-  #   volumes:
-  #     - /home/${USER}/docker/files/wireguard/etc-wireguard:/etc/wireguard/
-  #     - /home/${USER}/docker/files/wireguard/config:/config
-  #     - /lib/modules:/lib/modules
-  #     - /usr/src:/usr/src
-  #   ports:
-  #     - 51820:51820/udp
-  #   sysctls:
-  #     - net.ipv4.conf.all.src_valid_mark=1
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - unbound
-  #     - pihole
+  wg-easy:
+    image: ghcr.io/wg-easy/wg-easy
+    container_name: wg-easy
+    hostname: wg-easy
+    volumes:
+      - /home/${USER}/docker/files/wg-easy:/etc/wireguard
+    environment:
+      WG_HOST: piwireguard.getboolean.dev
+      PASSWORD: ${WIREGUARD_PASSWORD}
+    ports:
+      - 51820:51820/udp
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
 
   duckdns:
     image: linuxserver/duckdns:latest
