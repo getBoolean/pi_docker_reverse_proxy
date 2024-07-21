@@ -103,6 +103,7 @@ services:
       - WGUI_PASSWORD=admin
       - WGUI_MANAGE_START=true
       - WGUI_MANAGE_RESTART=true
+      - BIND_ADDRESS=0.0.0.0:5000
     volumes:
       - /home/${USER}/docker/files/wireguard-ui/db:/app/db
       - /home/${USER}/docker/files/wireguard/config:/etc/wireguard
