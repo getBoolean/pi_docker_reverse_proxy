@@ -99,8 +99,8 @@ services:
       options:
         max-size: 50m
     volumes:
-      - ./db:/app/db
-      - ./config:/etc/wireguard
+      - /home/${USER}/docker/files/wireguard-ui/db:/app/db
+      - /home/${USER}/docker/files/wireguard-ui/config:/config
     restart: unless-stopped
 
   duckdns:
