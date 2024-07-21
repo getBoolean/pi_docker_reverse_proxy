@@ -98,9 +98,14 @@ services:
       driver: json-file
       options:
         max-size: 50m
+    environment:
+      - WGUI_USERNAME=admin
+      - WGUI_PASSWORD=admin
+      - WGUI_MANAGE_START=true
+      - WGUI_MANAGE_RESTART=true
     volumes:
       - /home/${USER}/docker/files/wireguard-ui/db:/app/db
-      - /home/${USER}/docker/files/wireguard-ui/config:/config
+      - /home/${USER}/docker/files/wireguard/config:/etc/wireguard
     restart: unless-stopped
 
   duckdns:
