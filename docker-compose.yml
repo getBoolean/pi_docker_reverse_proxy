@@ -23,6 +23,7 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
+    hostname: pi-pihole
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -30,7 +31,7 @@ services:
       - 82:80
       - 444:443
     environment:
-      TZ: "America/Chicago"
+      TZ: ${TIMEZONE}
       WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
       PIHOLE_DNS_: 1.1.1.2;1.0.0.2
       FTLCONF_LOCAL_IPV4: ${PIHOLE_FTLCONF_LOCAL_IPV4}
@@ -59,11 +60,12 @@ services:
   wg-easy:
     image: ghcr.io/wg-easy/wg-easy:latest
     container_name: wg-easy
-    hostname: wg-easy
+    hostname: pi-wireguard
     volumes:
       - /home/${USER}/docker/files/wg-easy:/etc/wireguard
     environment:
-      WG_HOST: piwireguard.getboolean.dev
+      TZ: ${TIMEZONE}
+      WG_HOST: ${WIREGUARD_HOST}
       PASSWORD: ${WIREGUARD_PASSWORD}
     ports:
       - 51820:51820/udp
@@ -78,14 +80,15 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv4.ip_forward=1
 
+  # Update duckdns with current external IP
   duckdns:
     image: linuxserver/duckdns:latest
     container_name: duckdns
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Chicago
-      - SUBDOMAINS=getboolean
+      - TZ=${TIMEZONE}
+      - SUBDOMAINS=${DUCKDNS_SUBDOMAINS}
       - TOKEN=${DUCKDNS_TOKEN}
       - LOG_FILE=true
     volumes:
