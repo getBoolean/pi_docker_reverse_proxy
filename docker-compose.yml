@@ -105,9 +105,10 @@ services:
       - TZ=${TIMEZONE}
       - PUID=1000
       - PGID=1000
-      - PCAP=cap_chown,cap_fowner+ep
+      - PCAP=cap_chown,cap_fowner+ep,cap_dac_override
     volumes:
-      - /home/${USER}/docker:/var/syncthing
+      - /home/${USER}/docker/files/syncthing:/config
+      - /home/${USER}/docker:/docker
     # ports:
     #   - 8384:8384 # Web UI
     #   - 22000:22000/tcp # TCP file transfers
