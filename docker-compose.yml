@@ -105,6 +105,7 @@ services:
       - TZ=${TIMEZONE}
       - PUID=1000
       - PGID=1000
+      - PCAP=cap_chown,cap_fowner+ep
     volumes:
       - /home/${USER}/docker:/var/syncthing
     # ports:
