@@ -94,3 +94,22 @@ services:
     volumes:
       - /home/${USER}/docker/files/duckdns/config:/config
     restart: unless-stopped
+
+  # Backup volumes to another server
+  syncthing:
+    image: syncthing/syncthing
+    container_name: syncthing
+    hostname: pi-syncthing
+    network_mode: host
+    environment:
+      - TZ=${TIMEZONE}
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /home/${USER}/docker:/var/syncthing
+    # ports:
+    #   - 8384:8384 # Web UI
+    #   - 22000:22000/tcp # TCP file transfers
+    #   - 22000:22000/udp # QUIC file transfers
+    #   - 21027:21027/udp # Receive local discovery broadcasts
+    restart: unless-stopped
