@@ -110,7 +110,7 @@ services:
       - CAP_DAC_OVERRIDE
     volumes:
       - /home/${USER}/docker/files/syncthing:/var/syncthing/config
-      - /home/${USER}/docker:/docker
+      - /home/${USER}/docker:ro:/docker:ro
       - /st-sync:/var/syncthing
     # ports:
     #   - 8384:8384 # Web UI
