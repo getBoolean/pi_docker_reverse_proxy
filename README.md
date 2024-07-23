@@ -1,6 +1,6 @@
-# pi_docker_network_stack
+# Docker Reverse Proxy
 
-A simple network stack for a Pi-hole server containing nginx-proxy-manager, pihole, unbound, and wireguard.
+A docker reverse proxy compose file.
 
 ## Setup
 
