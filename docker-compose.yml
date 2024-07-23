@@ -23,7 +23,6 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
-    hostname: pi-pihole
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -60,7 +59,6 @@ services:
   wg-easy:
     image: ghcr.io/wg-easy/wg-easy:latest
     container_name: wg-easy
-    hostname: pi-wireguard
     volumes:
       - /home/${USER}/docker/files/wg-easy:/etc/wireguard
     environment:
