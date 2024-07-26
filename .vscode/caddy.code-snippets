@@ -19,8 +19,9 @@
 		"scope": "caddyfile",
 		"prefix": "public_proxy",
 		"body": [
-			"handle ${1:subdomain}.getboolean.dev ${1}.getboolean.org ${1}.home.getboolean.dev ${1}.home.getboolean.org {",
-			"    reverse_proxy {server_ip}:${2:port}",
+			"@${1:subdomain} host ${1}.getboolean.dev ${1}.getboolean.org ${1}.home.getboolean.dev ${1}.home.getboolean.org",
+			"handle @${1:subdomain} {",
+			"    reverse_proxy {env.SERVER_MACHINE_IP}:${2:port}",
 			"}",
 			""
 		],
@@ -30,8 +31,9 @@
 		"scope": "caddyfile",
 		"prefix": "local_proxy",
 		"body": [
-			"handle ${1:subdomain}.home.getboolean.dev ${1}.home.getboolean.org {",
-			"    reverse_proxy {server_ip}:${2:port}",
+			"@${1:subdomain} host ${1}.home.getboolean.dev ${1}.home.getboolean.org",
+			"handle @${1:subdomain} {",
+			"    reverse_proxy {env.SERVER_MACHINE_IP}:${2:port}",
 			"}",
 			""
 		],
