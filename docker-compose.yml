@@ -43,7 +43,7 @@ services:
     volumes:
       - /home/${USER}/docker/files/caddy/data:/data
       - /home/${USER}/docker/files/caddy/config:/config
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
 
 
 # networks:
