@@ -6,11 +6,6 @@
 }
 
 *.getboolean.dev *.getboolean.org *.home.getboolean.dev *.home.getboolean.org {
-	@nginx host nginx.home.getboolean.dev nginx.home.getboolean.org
-	handle @nginx {
-		reverse_proxy {env.PI_HOST}:81
-	}
-
 	@pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
 	handle @pihole {
 		reverse_proxy {env.PI_HOST}:82
