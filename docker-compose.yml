@@ -45,8 +45,10 @@ networks:
   caddy_macvlan:
     driver: macvlan
     driver_opts:
-      parent: ${ROUTER_IP}
+      parent: eth0
     ipam:
       driver: default
       config:
         - subnet: ${ROUTER_SUBNET}
+          gateway: ${ROUTER_IP}
+          ip_range: ${ROUTER_IP_RANGE}
