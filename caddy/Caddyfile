@@ -18,7 +18,7 @@
 
 	@piportainer host piportainer.home.getboolean.dev piportainer.home.getboolean.org
 	handle @piportainer {
-		reverse_proxy https://{env.PI_HOST}:9443
+		reverse_proxy {env.PI_HOST}:9000
 	}
 
 	@piwireguard host piwireguard.getboolean.dev piwireguard.getboolean.org
