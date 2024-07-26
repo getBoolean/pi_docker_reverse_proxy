@@ -190,4 +190,8 @@
 	handle @kavita {
 		reverse_proxy {env.SERVER_MACHINE_IP}:5423
 	}
+
+	handle {
+		abort
+	}
 }
