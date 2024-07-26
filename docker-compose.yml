@@ -39,6 +39,10 @@ services:
       TZ: ${TIMEZONE}
       PUID: 1000
       PGID: 1000
+      PORKBUN_API_KEY: ${PORKBUN_API_KEY}
+      PORKBUN_API_SECRET_KEY: ${PORKBUN_API_SECRET_KEY}
+      PI_HOST: ${PI_HOST}
+      SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
 
     volumes:
       - /home/${USER}/docker/files/caddy/data:/data
