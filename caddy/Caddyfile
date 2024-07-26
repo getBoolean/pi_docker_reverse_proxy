@@ -65,6 +65,16 @@
 	handle @kavita-latest {
 		reverse_proxy {env.SERVER_MACHINE_IP}:5424
 	}
+	
+	@kavita host kavita.getboolean.dev kavita.getboolean.org kavita.home.getboolean.dev kavita.home.getboolean.org
+	handle @kavita {
+		reverse_proxy {env.SERVER_MACHINE_IP}:5423
+	}
+
+	@kavita-re host kavita-re.getboolean.dev kavita-re.getboolean.org kavita-re.home.getboolean.dev kavita-re.home.getboolean.org
+	handle @kavita-re {
+		reverse_proxy {env.SERVER_MACHINE_IP}:5423
+	}
 
 	@freshrss host freshrss.getboolean.dev freshrss.getboolean.org freshrss.home.getboolean.dev freshrss.home.getboolean.org
 	handle @freshrss {
@@ -179,11 +189,6 @@
 	@sabnzbd host sabnzbd.home.getboolean.dev sabnzbd.home.getboolean.org
 	handle @sabnzbd {
 		reverse_proxy {env.SERVER_MACHINE_IP}:50193
-	}
-	
-	@kavita host kavita.getboolean.dev kavita.getboolean.org kavita.home.getboolean.dev kavita.home.getboolean.org
-	handle @kavita {
-		reverse_proxy {env.SERVER_MACHINE_IP}:5423
 	}
 
 	handle {
