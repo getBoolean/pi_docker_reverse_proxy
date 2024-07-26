@@ -191,6 +191,11 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:50193
 	}
 
+	@sunshine host sunshine.home.getboolean.dev sunshine.home.getboolean.org
+	handle @sunshine {
+		reverse_proxy {env.SERVER_MACHINE_IP}:47990
+	}
+	
 	handle {
 		abort
 	}
