@@ -16,8 +16,8 @@
 		reverse_proxy {env.PI_HOST}:82
 	}
 
-	@portainer host portainer.home.getboolean.dev portainer.home.getboolean.org
-	handle @portainer {
+	@piportainer host piportainer.home.getboolean.dev piportainer.home.getboolean.org
+	handle @piportainer {
 		reverse_proxy {env.PI_HOST}:9443
 	}
 
