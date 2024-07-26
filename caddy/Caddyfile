@@ -16,7 +16,7 @@
 		reverse_proxy {env.PI_HOST}:9000
 	}
 
-	@piwireguard host piwireguard.getboolean.dev piwireguard.getboolean.org
+	@piwireguard host piwireguard.getboolean.dev piwireguard.getboolean.org piwireguard.home.getboolean.dev piwireguard.home.getboolean.org
 	handle @piwireguard {
 		reverse_proxy {env.PI_HOST}:51821
 	}
