@@ -26,135 +26,168 @@
 		reverse_proxy {env.PI_HOST}:51821
 	}
 
-	handle host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org {
+	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
+	handle @jellyfin {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8096
 	}
 
-	handle host heimdall.getboolean.dev heimdall.getboolean.org heimdall.home.getboolean.dev heimdall.home.getboolean.org {
+	@heimdall host heimdall.getboolean.dev heimdall.getboolean.org heimdall.home.getboolean.dev heimdall.home.getboolean.org
+	handle @heimdall {
 		reverse_proxy {env.SERVER_MACHINE_IP}:35465
 	}
 
-	handle host homarr.getboolean.dev homarr.getboolean.org homarr.home.getboolean.dev homarr.home.getboolean.org {
+	@homarr host homarr.getboolean.dev homarr.getboolean.org homarr.home.getboolean.dev homarr.home.getboolean.org
+	handle @homarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:7575
 	}
 
-	handle host organizr.getboolean.dev organizr.getboolean.org organizr.home.getboolean.dev organizr.home.getboolean.org {
+	@organizr host organizr.getboolean.dev organizr.getboolean.org organizr.home.getboolean.dev organizr.home.getboolean.org
+	handle @organizr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:35445
 	}
 	
-	handle host headphones.home.getboolean.dev headphones.home.getboolean.org {
+	@headphones host headphones.home.getboolean.dev headphones.home.getboolean.org
+	handle @headphones {
 		reverse_proxy {env.SERVER_MACHINE_IP}:24567
 	}
 	
-	handle host audiobookshelf.getboolean.dev audiobookshelf.getboolean.org audiobookshelf.home.getboolean.dev audiobookshelf.home.getboolean.org {
+	@audiobookshelf host audiobookshelf.getboolean.dev audiobookshelf.getboolean.org audiobookshelf.home.getboolean.dev audiobookshelf.home.getboolean.org
+	handle @audiobookshelf {
 		reverse_proxy {env.SERVER_MACHINE_IP}:13378
 	}
 	
-	handle host navidrome.getboolean.dev navidrome.getboolean.org navidrome.home.getboolean.dev navidrome.home.getboolean.org {
+	@navidrome host navidrome.getboolean.dev navidrome.getboolean.org navidrome.home.getboolean.dev navidrome.home.getboolean.org
+	handle @navidrome {
 		reverse_proxy {env.SERVER_MACHINE_IP}:4533
 	}
 	
-	handle host komga.getboolean.dev komga.getboolean.org komga.home.getboolean.dev komga.home.getboolean.org {
+	@komga host komga.getboolean.dev komga.getboolean.org komga.home.getboolean.dev komga.home.getboolean.org
+	handle @komga {
 		reverse_proxy {env.SERVER_MACHINE_IP}:25600
 	}
 	
-	handle host kavita-latest.getboolean.dev kavita-latest.getboolean.org kavita-latest.home.getboolean.dev kavita-latest.home.getboolean.org {
+	@kavita-latest host kavita-latest.getboolean.dev kavita-latest.getboolean.org kavita-latest.home.getboolean.dev kavita-latest.home.getboolean.org
+	handle @kavita-latest {
 		reverse_proxy {env.SERVER_MACHINE_IP}:5424
 	}
 
-	handle host freshrss.getboolean.dev freshrss.getboolean.org freshrss.home.getboolean.dev freshrss.home.getboolean.org {
+	@freshrss host freshrss.getboolean.dev freshrss.getboolean.org freshrss.home.getboolean.dev freshrss.home.getboolean.org
+	handle @freshrss {
 		reverse_proxy {env.SERVER_MACHINE_IP}:39412
 	}
 	
-	handle host mealie.getboolean.dev mealie.getboolean.org mealie.home.getboolean.dev mealie.home.getboolean.org {
+	@mealie host mealie.getboolean.dev mealie.getboolean.org mealie.home.getboolean.dev mealie.home.getboolean.org
+	handle @mealie {
 		reverse_proxy {env.SERVER_MACHINE_IP}:9925
 	}
 
-	handle host autobrr.home.getboolean.dev autobrr.home.getboolean.org {
+	@autobrr host autobrr.home.getboolean.dev autobrr.home.getboolean.org
+	handle @autobrr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:7474
 	}
 	
-	handle host bazarr-tv.home.getboolean.dev bazarr-tv.home.getboolean.org {
+	@bazarr-tv host bazarr-tv.home.getboolean.dev bazarr-tv.home.getboolean.org
+	handle @bazarr-tv {
 		reverse_proxy {env.SERVER_MACHINE_IP}:6768
 	}
 	
-	handle host bazarr.home.getboolean.dev bazarr.home.getboolean.org {
+	@bazarr host bazarr.home.getboolean.dev bazarr.home.getboolean.org
+	handle @bazarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:6767
 	}
 	
-	handle host flaresolverr.home.getboolean.dev flaresolverr.home.getboolean.org {
+	@flaresolverr host flaresolverr.home.getboolean.dev flaresolverr.home.getboolean.org
+	handle @flaresolverr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8191
 	}
 	
-	handle host jellyseerr.home.getboolean.dev jellyseerr.home.getboolean.org {
+	@jellyseerr host jellyseerr.home.getboolean.dev jellyseerr.home.getboolean.org
+	handle @jellyseerr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:5055
 	}
 
-	handle host jellystat.home.getboolean.dev jellystat.home.getboolean.org {
+	@jellystat host jellystat.home.getboolean.dev jellystat.home.getboolean.org
+	handle @jellystat {
 		reverse_proxy {env.SERVER_MACHINE_IP}:3001
 	}
 	
-	handle host prowlarr.home.getboolean.dev prowlarr.home.getboolean.org {
+	@prowlarr host prowlarr.home.getboolean.dev prowlarr.home.getboolean.org
+	handle @prowlarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:9177
 	}
 	
-	handle host lidarr.home.getboolean.dev lidarr.home.getboolean.org {
+	@lidarr host lidarr.home.getboolean.dev lidarr.home.getboolean.org
+	handle @lidarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8686
 	}
 	
-	handle host readarr-ab.home.getboolean.dev readarr-ab.home.getboolean.org {
+	@readarr-ab host readarr-ab.home.getboolean.dev readarr-ab.home.getboolean.org
+	handle @readarr-ab {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8788
 	}
 	
-	handle host readarr.home.getboolean.dev readarr.home.getboolean.org {
+	@readarr host readarr.home.getboolean.dev readarr.home.getboolean.org
+	handle @readarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8787
 	}
 
-	# handle host kapowarr.home.getboolean.dev kapowarr.home.getboolean.org {
+	# @kapowarr host kapowarr.home.getboolean.dev kapowarr.home.getboolean.org
+	# handle @kapowarr {
 	# 	reverse_proxy {env.SERVER_MACHINE_IP}:43256
 	# }
 
-	handle host mylar.home.getboolean.dev mylar.home.getboolean.org {
-		reverse_proxy {env.SERVER_MACHINE_IP}:52345
-	}
+	# @mylar host mylar.home.getboolean.dev mylar.home.getboolean.org
+	# handle @mylar {
+	# 	reverse_proxy {env.SERVER_MACHINE_IP}:52345
+	# }
 
-	# handle host lanraragi.home.getboolean.dev lanraragi.home.getboolean.org {
+	# @lanraragi host lanraragi.home.getboolean.dev lanraragi.home.getboolean.org
+	# handle @lanraragi {
 	# 	reverse_proxy {env.SERVER_MACHINE_IP}:42686
 	# }
 	
-	handle host lanraragi-eh.home.getboolean.dev lanraragi-eh.home.getboolean.org {
+	@lanraragi-eh host lanraragi-eh.home.getboolean.dev lanraragi-eh.home.getboolean.org
+	handle @lanraragi-eh {
 		reverse_proxy {env.SERVER_MACHINE_IP}:42687
 	}
 	
-	handle host suwayomi.home.getboolean.dev suwayomi.home.getboolean.org {
+	@suwayomi host suwayomi.home.getboolean.dev suwayomi.home.getboolean.org
+	handle @suwayomi {
 		reverse_proxy {env.SERVER_MACHINE_IP}:42688
 	}
 	
-	handle host radarr-theatre.home.getboolean.dev radarr-theatre.home.getboolean.org {
+	@radarr-theatre host radarr-theatre.home.getboolean.dev radarr-theatre.home.getboolean.org
+	handle @radarr-theatre {
 		reverse_proxy {env.SERVER_MACHINE_IP}:26433
 	}
 	
-	handle host radarr.home.getboolean.dev radarr.home.getboolean.org {
+	@radarr host radarr.home.getboolean.dev radarr.home.getboolean.org
+	handle @radarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:26432
 	}
 	
-	handle host sonarr-tv.home.getboolean.dev sonarr-tv.home.getboolean.org {
+	@sonarr-tv host sonarr-tv.home.getboolean.dev sonarr-tv.home.getboolean.org
+	handle @sonarr-tv {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8888
 	}
 
-	handle host sonarr.home.getboolean.dev sonarr.home.getboolean.org {
+	@sonarr host sonarr.home.getboolean.dev sonarr.home.getboolean.org
+	handle @sonarr {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8989
 	}
 
-	handle host qbittorrent.home.getboolean.dev qbittorrent.home.getboolean.org {
+	@qbittorrent host qbittorrent.home.getboolean.dev qbittorrent.home.getboolean.org
+	handle @qbittorrent {
 		reverse_proxy {env.SERVER_MACHINE_IP}:14627
 	}
 	
-	handle host sabnzbd.home.getboolean.dev sabnzbd.home.getboolean.org {
+	@sabnzbd host sabnzbd.home.getboolean.dev sabnzbd.home.getboolean.org
+	handle @sabnzbd {
 		reverse_proxy {env.SERVER_MACHINE_IP}:50193
 	}
 	
-	handle host kavita.getboolean.dev kavita.getboolean.org kavita.home.getboolean.dev kavita.home.getboolean.org {
+	@kavita host kavita.getboolean.dev kavita.getboolean.org kavita.home.getboolean.dev kavita.home.getboolean.org
+	handle @kavita {
 		reverse_proxy {env.SERVER_MACHINE_IP}:5423
 	}
 }
