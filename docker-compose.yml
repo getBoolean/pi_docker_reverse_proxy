@@ -21,7 +21,7 @@ services:
   #     - /home/${USER}/docker/files/nginx/letsencrypt:/etc/letsencrypt
 
   caddy:
-    image: erri120/docker-caddy-porkbun:2.8.4
+    image: viv32/caddy-porkbun:2.8.4
     container_name: caddy
     restart: unless-stopped
     ports:
