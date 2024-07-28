@@ -108,7 +108,7 @@
 	
 	@jellyseerr host jellyseerr.home.getboolean.dev jellyseerr.home.getboolean.org
 	handle @jellyseerr {
-		reverse_proxy {env.SERVER_MACHINE_IP}:5055
+		reverse_proxy {env.SERVER_MACHINE_IP}:35145
 	}
 
 	@jellystat host jellystat.home.getboolean.dev jellystat.home.getboolean.org
