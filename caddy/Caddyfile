@@ -196,6 +196,11 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:47990
 	}
 	
+	@omv host omv.home.getboolean.dev omv.home.getboolean.org
+	handle @omv {
+		reverse_proxy {env.SERVER_MACHINE_IP}:8088
+	}
+	
 	handle {
 		abort
 	}
