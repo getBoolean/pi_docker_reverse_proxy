@@ -200,6 +200,11 @@
 	handle @omv {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8088
 	}
+
+	@speedtest host speedtest.home.getboolean.dev speedtest.home.getboolean.org
+	handle @speedtest {
+		reverse_proxy {env.SERVER_MACHINE_IP}:8185
+	}
 	
 	handle {
 		abort
