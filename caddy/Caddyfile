@@ -230,6 +230,11 @@
 	handle @nextcloud {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8466
 	}
+
+	@immich host immich.home.getboolean.dev immich.home.getboolean.org immich.getboolean.dev immich.getboolean.org
+	handle @immich {
+		reverse_proxy {env.SERVER_MACHINE_IP}:2283
+	}
 	
 	handle {
 		abort
