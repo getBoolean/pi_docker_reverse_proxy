@@ -223,7 +223,7 @@
 
 	@wordle host wordle.home.getboolean.dev wordle.home.getboolean.org
 	handle @wordle {
-		reverse_proxy {env.SERVER_MACHINE_IP}:8081
+		reverse_proxy {env.SERVER_MACHINE_IP}:8072
 	}
 
 	@nextcloud host nextcloud.home.getboolean.dev nextcloud.home.getboolean.org nextcloud.getboolean.dev nextcloud.getboolean.org
