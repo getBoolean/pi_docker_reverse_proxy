@@ -21,6 +21,16 @@
 		reverse_proxy {env.PI_HOST}:51821
 	}
 
+	@syncthing-pi host syncthing-pi.home.getboolean.dev syncthing-pi.home.getboolean.org
+	handle @syncthing-pi {
+		reverse_proxy {env.PI_HOST}:8384
+	}
+
+	@syncthing-pc host syncthing-pc.home.getboolean.dev syncthing-pc.home.getboolean.org
+	handle @syncthing-pc {
+		reverse_proxy {env.PC_HOST}:8384
+	}
+
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
 	handle @jellyfin {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8096
@@ -204,6 +214,11 @@
 	@speedtest host speedtest.home.getboolean.dev speedtest.home.getboolean.org
 	handle @speedtest {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8185
+	}
+
+	@syncthing-server host syncthing-server.home.getboolean.dev syncthing-server.home.getboolean.org
+	handle @syncthing-server {
+		reverse_proxy {env.SERVER_MACHINE_IP}:8384
 	}
 	
 	handle {
