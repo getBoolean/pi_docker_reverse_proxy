@@ -220,6 +220,12 @@
 	handle @syncthing-server {
 		reverse_proxy {env.SERVER_MACHINE_IP}:8384
 	}
+
+	@wordle host wordle.home.getboolean.dev wordle.home.getboolean.org
+	handle @wordle {
+		reverse_proxy {env.SERVER_MACHINE_IP}:8081
+	}
+
 	
 	handle {
 		abort
