@@ -11,9 +11,9 @@
 		reverse_proxy {env.PI_HOST}:82
 	}
 
-	@piportainer host piportainer.home.getboolean.dev piportainer.home.getboolean.org
-	handle @piportainer {
-		reverse_proxy {env.PI_HOST}:9000
+	@dockge host dockge.home.getboolean.dev dockge.home.getboolean.org
+	handle @dockge {
+		reverse_proxy {env.PI_HOST}:5001
 	}
 
 	@piwireguard host piwireguard.getboolean.dev piwireguard.getboolean.org piwireguard.home.getboolean.dev piwireguard.home.getboolean.org
