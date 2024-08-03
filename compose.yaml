@@ -19,6 +19,6 @@ services:
       SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
       PC_HOST: ${PC_HOST}
     volumes:
-      - /docker/appdata/caddy/data:/data
+      - /home/docker/appdata/caddy/data:/data
       - ./config:/config
       - ./Caddyfile:/etc/caddy/Caddyfile
