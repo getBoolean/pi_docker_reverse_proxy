@@ -20,5 +20,5 @@ services:
       PC_HOST: ${PC_HOST}
     volumes:
       - /home/docker/appdata/caddy/data:/data
-      - ./config:/config
+      - /home/docker/appdata/caddy/config:/config
       - ./Caddyfile:/etc/caddy/Caddyfile
