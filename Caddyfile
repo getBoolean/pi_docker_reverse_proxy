@@ -11,8 +11,8 @@
 		reverse_proxy {env.PI_HOST}:82
 	}
 
-	@dockge host dockge.home.getboolean.dev dockge.home.getboolean.org
-	handle @dockge {
+	@docker-pi host docker-pi.home.getboolean.dev docker-pi.home.getboolean.org
+	handle @docker-pi {
 		reverse_proxy {env.PI_HOST}:5001
 	}
 
@@ -29,6 +29,11 @@
 	@syncthing-pc host syncthing-pc.home.getboolean.dev syncthing-pc.home.getboolean.org
 	handle @syncthing-pc {
 		reverse_proxy {env.PC_HOST}:8384
+	}
+
+	@docker-server host docker-server.home.getboolean.dev docker-server.home.getboolean.org
+	handle @docker-server {
+		reverse_proxy {env.SERVER_MACHINE_IP}:5001
 	}
 
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
