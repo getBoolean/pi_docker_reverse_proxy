@@ -211,6 +211,11 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:50193
 	}
 
+	@nzb host nzb.home.getboolean.dev nzb.home.getboolean.org
+	handle @nzb {
+		reverse_proxy {env.SERVER_MACHINE_IP}:6789
+	}
+
 	@sunshine host sunshine.home.getboolean.dev sunshine.home.getboolean.org
 	handle @sunshine {
 		reverse_proxy {env.SERVER_MACHINE_IP}:47990
