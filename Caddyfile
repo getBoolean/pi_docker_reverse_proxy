@@ -38,7 +38,7 @@
 
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
 	handle @jellyfin {
-		reverse_proxy {env.SERVER_MACHINE_IP}:25345
+		reverse_proxy {env.SERVER_MACHINE_IP}:8096
 	}
 
 	@homepage host homepage.getboolean.dev homepage.getboolean.org homepage.home.getboolean.dev homepage.home.getboolean.org
