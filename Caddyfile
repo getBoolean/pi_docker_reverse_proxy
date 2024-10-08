@@ -38,7 +38,7 @@
 
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
 	handle @jellyfin {
-		reverse_proxy {env.SERVER_MACHINE_IP}:8096
+		reverse_proxy {env.SERVER_MACHINE_IP}:25345
 	}
 
 	@heimdall host heimdall.getboolean.dev heimdall.getboolean.org heimdall.home.getboolean.dev heimdall.home.getboolean.org
