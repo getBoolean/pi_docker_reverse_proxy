@@ -251,8 +251,8 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:2283
 	}
 
-	@31854 host 31854.getboolean.dev 31854.getboolean.org 31854.home.getboolean.dev 31854.home.getboolean.org
-	handle @31854 {
+	@linkding host linkding.getboolean.dev linkding.getboolean.org linkding.home.getboolean.dev linkding.home.getboolean.org
+	handle @linkding {
 		reverse_proxy {env.SERVER_MACHINE_IP}:31854
 	}
 	
