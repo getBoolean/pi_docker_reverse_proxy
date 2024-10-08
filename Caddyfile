@@ -41,6 +41,11 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:25345
 	}
 
+	@homepage host homepage.getboolean.dev homepage.getboolean.org homepage.home.getboolean.dev homepage.home.getboolean.org
+	handle @homepage {
+		reverse_proxy {env.SERVER_MACHINE_IP}:3519
+	}
+
 	@heimdall host heimdall.getboolean.dev heimdall.getboolean.org heimdall.home.getboolean.dev heimdall.home.getboolean.org
 	handle @heimdall {
 		reverse_proxy {env.SERVER_MACHINE_IP}:35465
