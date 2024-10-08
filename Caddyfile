@@ -250,6 +250,12 @@
 	handle @immich {
 		reverse_proxy {env.SERVER_MACHINE_IP}:2283
 	}
+
+	@31854 host 31854.getboolean.dev 31854.getboolean.org 31854.home.getboolean.dev 31854.home.getboolean.org
+	handle @31854 {
+		reverse_proxy {env.SERVER_MACHINE_IP}:31854
+	}
+	
 	
 	handle {
 		abort
