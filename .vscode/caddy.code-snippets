@@ -21,7 +21,7 @@
 		"body": [
 			"@${1:subdomain} host ${1}.getboolean.dev ${1}.getboolean.org ${1}.home.getboolean.dev ${1}.home.getboolean.org",
 			"handle @${1:subdomain} {",
-			"    reverse_proxy {env.SERVER_MACHINE_IP}:${2:port}",
+			"    reverse_proxy {env.SERVER_MACHINE_HOST}:${2:port}",
 			"}",
 			""
 		],
@@ -33,7 +33,7 @@
 		"body": [
 			"@${1:subdomain} host ${1}.home.getboolean.dev ${1}.home.getboolean.org",
 			"handle @${1:subdomain} {",
-			"    reverse_proxy {env.SERVER_MACHINE_IP}:${2:port}",
+			"    reverse_proxy {env.SERVER_MACHINE_HOST}:${2:port}",
 			"}",
 			""
 		],
