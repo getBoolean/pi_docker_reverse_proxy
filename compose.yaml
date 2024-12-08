@@ -16,7 +16,7 @@ services:
       PORKBUN_API_KEY: ${PORKBUN_API_KEY}
       PORKBUN_API_SECRET_KEY: ${PORKBUN_API_SECRET_KEY}
       PI_HOST: ${PI_HOST}
-      SERVER_MACHINE_HOST: ${SERVER_MACHINE_HOST}
+      SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
       PC_HOST: ${PC_HOST}
     volumes:
       - /home/docker/appdata/caddy/data:/data
