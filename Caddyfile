@@ -228,7 +228,7 @@
 
 	@pve host pve.home.getboolean.dev pve.home.getboolean.org
 	handle @pve {
-		reverse_proxy {env.SERVER_MACHINE_IP}:8006
+		reverse_proxy https://{env.SERVER_MACHINE_IP}:8006
 	}
 
 	@speedtest host speedtest.home.getboolean.dev speedtest.home.getboolean.org
