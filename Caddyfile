@@ -242,7 +242,7 @@
 			health_status 200
 
 			transport http {
-				tls_trusted_ca_certs /etc/pve/pve-root-ca.pem # Path to PVE root cert
+				tls_insecure_skip_verify # Could allow a man-in-the-middle attack
 			}
 		}
 	}
