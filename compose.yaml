@@ -20,4 +20,5 @@ services:
     volumes:
       - /home/docker/appdata/caddy/data:/data
       - /home/docker/appdata/caddy/config:/config
+      - /home/docker/certs/:/certs
       - ./Caddyfile:/etc/caddy/Caddyfile
