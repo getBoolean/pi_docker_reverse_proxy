@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   caddy:
     image: viv32/caddy-porkbun:latest
