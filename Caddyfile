@@ -228,9 +228,21 @@
 
 	@pve host pve.home.getboolean.dev pve.home.getboolean.org
 	handle @pve {
-		reverse_proxy {env.SERVER_MACHINE_IP}:8006 {
+		reverse_proxy * {
+			to {env.SERVER_MACHINE_IP}:8006
+
+			lb_policy ip_hash     # Makes backend sticky based on client ip
+			lb_try_duration 1s
+			lb_try_interval 250ms
+			
+			health_uri /          # Backend health check path
+			# health_port 80      # Default same as backend port
+			health_interval 10s
+			health_timeout 2s
+			health_status 200
+
 			transport http {
-				tls_trusted_ca_certs /etc/pve/pve-root-ca.pem
+				tls_trusted_ca_certs /etc/pve/pve-root-ca.pem # Path to PVE root cert
 			}
 		}
 	}
