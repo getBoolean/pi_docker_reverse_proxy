@@ -6,7 +6,12 @@
 }
 
 *.getboolean.dev *.getboolean.org *.home.getboolean.dev *.home.getboolean.org {
-	@pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
+	@router host router.home.getboolean.dev router.home.getboolean.org
+        handle @router {
+                reverse_proxy 192.168.1.1:80
+        }
+
+        @pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
 	handle @pihole {
 		reverse_proxy {env.PI_HOST}:82
 	}
