@@ -234,7 +234,7 @@
 	@pve host pve.home.getboolean.dev pve.home.getboolean.org
 	handle @pve {
 		reverse_proxy * {
-			to {env.SERVER_MACHINE_IP}:8006
+			to {env.SERVER_MACHINE_IP}:8006 # Add more entries for clustered proxmox
 
 			lb_policy ip_hash     # Makes backend sticky based on client ip
 			lb_try_duration 1s
