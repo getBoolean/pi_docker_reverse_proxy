@@ -231,6 +231,11 @@
 		reverse_proxy {env.SERVER_MACHINE_IP}:8088
 	}
 
+	@cockpit host cockpit.home.getboolean.dev cockpit.home.getboolean.org
+	handle @cockpit {
+		reverse_proxy {env.COCKPIT_VM_IP}:9090
+	}
+
 	@pve host pve.home.getboolean.dev pve.home.getboolean.org
 	handle @pve {
 		reverse_proxy * {
