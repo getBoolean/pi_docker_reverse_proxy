@@ -3,11 +3,12 @@ services:
     image: viv32/caddy-porkbun:latest
     container_name: caddy
     restart: unless-stopped
-    ports:
-      # Public HTTP Port
-      - 80:80
-      - 443:443
-      - 81:81
+    network_mode: "host"
+    #ports:
+    #  # Public HTTP Port
+    #  - 80:80
+    #  - 443:443
+    #  - 81:81
     environment:
       TZ: ${TIMEZONE}
       PUID: 1000
