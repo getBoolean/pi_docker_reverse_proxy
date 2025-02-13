@@ -9,19 +9,21 @@ services:
       - 80:80
       - 443:443
       - 81:81
+    env_file:
+      - .env
     environment:
-      TZ: ${TIMEZONE}
+      TZ: America/Chicago
       PUID: 1000
       PGID: 1000
-      PORKBUN_API_KEY: ${PORKBUN_API_KEY}
-      PORKBUN_API_SECRET_KEY: ${PORKBUN_API_SECRET_KEY}
-      PI_HOST: ${PI_HOST}
-      PC_HOST: ${PC_HOST}
-      SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
-      DOCKER_LXC_IP: ${DOCKER_LXC_IP}
-      COCKPIT_LXC_IP: ${COCKPIT_LXC_IP}
-      VSCODE_LXC_IP: ${VSCODE_LXC_IP}
-      GPU_VM_IP: ${GPU_VM_IP}
+      # PORKBUN_API_KEY: ${PORKBUN_API_KEY}
+      # PORKBUN_API_SECRET_KEY: ${PORKBUN_API_SECRET_KEY}
+      # PI_HOST: ${PI_HOST}
+      # PC_HOST: ${PC_HOST}
+      # SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
+      # DOCKER_LXC_IP: ${DOCKER_LXC_IP}
+      # COCKPIT_LXC_IP: ${COCKPIT_LXC_IP}
+      # VSCODE_LXC_IP: ${VSCODE_LXC_IP}
+      # GPU_VM_IP: ${GPU_VM_IP}
     volumes:
       - /home/docker/appdata/caddy/data:/data
       - /home/docker/appdata/caddy/config:/config
