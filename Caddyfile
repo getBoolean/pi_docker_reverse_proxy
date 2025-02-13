@@ -8,9 +8,9 @@
 
 *.getboolean.dev *.getboolean.org *.home.getboolean.dev *.home.getboolean.org {
 	@router host router.home.getboolean.dev router.home.getboolean.org
-        handle @router {
-                reverse_proxy 192.168.1.1:80
-        }
+	handle @router {
+		reverse_proxy 192.168.1.1:80
+	}
 
         @pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
 	handle @pihole {
@@ -44,11 +44,7 @@
 
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
 	handle @jellyfin {
-		reverse_proxy {env.DOCKER_VM_IP}:8096 {
-			transport http {
-				tls_insecure_skip_verify
-			}
-		}
+		reverse_proxy {env.DOCKER_VM_IP}:8096
 	}
 
 	#@homepage host homepage.getboolean.dev homepage.getboolean.org homepage.home.getboolean.dev homepage.home.getboolean.org
