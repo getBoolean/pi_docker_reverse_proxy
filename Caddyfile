@@ -12,7 +12,7 @@
 		reverse_proxy 192.168.1.1:80
 	}
 
-        @pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
+	@pihole host pihole.home.getboolean.dev pihole.home.getboolean.org
 	handle @pihole {
 		reverse_proxy {env.PI_HOST}:82
 	}
