@@ -239,7 +239,7 @@
 
 	@cockpit host cockpit.home.getboolean.dev cockpit.home.getboolean.org
 	handle @cockpit {
-		reverse_proxy {env.COCKPIT_VM_IP}:9090 {
+		reverse_proxy {env.COCKPIT_LXC_IP}:9090 {
 			transport http {
 				tls_insecure_skip_verify
 			}
