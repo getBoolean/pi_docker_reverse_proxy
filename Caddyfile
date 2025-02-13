@@ -241,6 +241,11 @@
 		}
 	}
 
+	@vscode host vscode.home.getboolean.dev vscode.home.getboolean.org
+	handle @vscode {
+		reverse_proxy {env.VSCODE_LXC_IP}:8680
+	}
+
 	@netdata host netdata.home.getboolean.dev netdata.home.getboolean.org
 	handle @netdata {
 		reverse_proxy {env.SERVER_MACHINE_IP}:19999

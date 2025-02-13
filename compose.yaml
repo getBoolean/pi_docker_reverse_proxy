@@ -16,8 +16,11 @@ services:
       PORKBUN_API_KEY: ${PORKBUN_API_KEY}
       PORKBUN_API_SECRET_KEY: ${PORKBUN_API_SECRET_KEY}
       PI_HOST: ${PI_HOST}
-      SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
       PC_HOST: ${PC_HOST}
+      SERVER_MACHINE_IP: ${SERVER_MACHINE_IP}
+      DOCKER_VM_IP: ${DOCKER_VM_IP}
+      COCKPIT_VM_IP: ${COCKPIT_VM_IP}
+      VSCODE_LXC_IP: ${VSCODE_LXC_IP}
     volumes:
       - /home/docker/appdata/caddy/data:/data
       - /home/docker/appdata/caddy/config:/config
