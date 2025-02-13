@@ -241,6 +241,11 @@
 		}
 	}
 
+	@netdata host netdata.home.getboolean.dev netdata.home.getboolean.org
+	handle @netdata {
+		reverse_proxy {env.SERVER_MACHINE_IP}:19999
+	}
+
 	@pve host pve.home.getboolean.dev pve.home.getboolean.org
 	handle @pve {
 		reverse_proxy * {
