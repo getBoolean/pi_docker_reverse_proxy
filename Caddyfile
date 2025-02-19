@@ -47,10 +47,10 @@
 		reverse_proxy {env.DOCKER_LXC_IP}:6543
 	}
 
-	# @assistant host assistant.home.getboolean.dev assistant.home.getboolean.org
-	# handle @assistant {
-	# 	reverse_proxy {env.DOCKER_LXC_IP}:8123
-	# }
+	@assistant host assistant.home.getboolean.dev assistant.home.getboolean.org
+	handle @assistant {
+		reverse_proxy {env.DOCKER_LXC_IP}:8123
+	}
 
 	@docker-gpu host docker-gpu.home.getboolean.dev docker-gpu.home.getboolean.org
 	handle @docker-gpu {
