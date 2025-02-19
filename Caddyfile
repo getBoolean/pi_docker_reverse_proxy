@@ -42,6 +42,11 @@
 		reverse_proxy {env.DOCKER_LXC_IP}:5001
 	}
 
+	@webnut host webnut.home.getboolean.dev webnut.home.getboolean.org
+	handle @webnut {
+		reverse_proxy {env.DOCKER_LXC_IP}:6543
+	}
+
 	@docker-gpu host docker-gpu.home.getboolean.dev docker-gpu.home.getboolean.org
 	handle @docker-gpu {
 		reverse_proxy {env.GPU_VM_IP}:5001
