@@ -52,6 +52,46 @@
 		reverse_proxy {env.GPU_VM_IP}:8096
 	}
 
+	@cockpit host cockpit.home.getboolean.dev cockpit.home.getboolean.org
+	handle @cockpit {
+		reverse_proxy {env.COCKPIT_LXC_IP}:9090 {
+			transport http {
+				tls_insecure_skip_verify
+			}
+		}
+	}
+
+	@vscode host vscode.home.getboolean.dev vscode.home.getboolean.org
+	handle @vscode {
+		reverse_proxy {env.VSCODE_LXC_IP}:8680
+	}
+
+	@netdata host netdata.home.getboolean.dev netdata.home.getboolean.org
+	handle @netdata {
+		reverse_proxy {env.SERVER_MACHINE_IP}:19999
+	}
+
+	@pve host pve.home.getboolean.dev pve.home.getboolean.org
+	handle @pve {
+		reverse_proxy * {
+			to {env.SERVER_MACHINE_IP}:8006 # Add more entries for clustered proxmox
+
+			lb_policy ip_hash     # Makes backend sticky based on client ip
+			lb_try_duration 1s
+			lb_try_interval 250ms
+			
+			health_uri /          # Backend health check path
+			# health_port 80      # Default same as backend port
+			health_interval 10s
+			health_timeout 2s
+			health_status 200
+
+			transport http {
+				tls_trusted_ca_certs /certs/pve/pve-root-ca.pem # Path to PVE root cert
+			}
+		}
+	}
+
 	#@homepage host homepage.getboolean.dev homepage.getboolean.org homepage.home.getboolean.dev homepage.home.getboolean.org
 	#handle @homepage {
 	#	reverse_proxy {env.DOCKER_LXC_IP}:3519
@@ -236,46 +276,6 @@
 	#handle @omv {
 	#	reverse_proxy {env.DOCKER_LXC_IP}:8088
 	#}
-
-	@cockpit host cockpit.home.getboolean.dev cockpit.home.getboolean.org
-	handle @cockpit {
-		reverse_proxy {env.COCKPIT_LXC_IP}:9090 {
-			transport http {
-				tls_insecure_skip_verify
-			}
-		}
-	}
-
-	@vscode host vscode.home.getboolean.dev vscode.home.getboolean.org
-	handle @vscode {
-		reverse_proxy {env.VSCODE_LXC_IP}:8680
-	}
-
-	@netdata host netdata.home.getboolean.dev netdata.home.getboolean.org
-	handle @netdata {
-		reverse_proxy {env.SERVER_MACHINE_IP}:19999
-	}
-
-	@pve host pve.home.getboolean.dev pve.home.getboolean.org
-	handle @pve {
-		reverse_proxy * {
-			to {env.SERVER_MACHINE_IP}:8006 # Add more entries for clustered proxmox
-
-			lb_policy ip_hash     # Makes backend sticky based on client ip
-			lb_try_duration 1s
-			lb_try_interval 250ms
-			
-			health_uri /          # Backend health check path
-			# health_port 80      # Default same as backend port
-			health_interval 10s
-			health_timeout 2s
-			health_status 200
-
-			transport http {
-				tls_trusted_ca_certs /certs/pve/pve-root-ca.pem # Path to PVE root cert
-			}
-		}
-	}
 
 	#@speedtest host speedtest.home.getboolean.dev speedtest.home.getboolean.org
 	#handle @speedtest {
