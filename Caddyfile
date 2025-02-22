@@ -52,6 +52,11 @@
 		reverse_proxy {env.DOCKER_LXC_IP}:8123
 	}
 
+	@immich host immich.home.getboolean.dev immich.home.getboolean.org immich.getboolean.dev immich.getboolean.org
+	handle @immich {
+		reverse_proxy {env.DOCKER_LXC_IP}:2283
+	}
+
 	@docker-gpu host docker-gpu.home.getboolean.dev docker-gpu.home.getboolean.org
 	handle @docker-gpu {
 		reverse_proxy {env.GPU_VM_IP}:5001
@@ -305,11 +310,6 @@
 	#@nextcloud host nextcloud.home.getboolean.dev nextcloud.home.getboolean.org nextcloud.getboolean.dev nextcloud.getboolean.org
 	#handle @nextcloud {
 	#	reverse_proxy {env.DOCKER_LXC_IP}:8466
-	#}
-
-	#@immich host immich.home.getboolean.dev immich.home.getboolean.org immich.getboolean.dev immich.getboolean.org
-	#handle @immich {
-	#	reverse_proxy {env.DOCKER_LXC_IP}:2283
 	#}
 
 	#@linkding host linkding.getboolean.dev linkding.getboolean.org linkding.home.getboolean.dev linkding.home.getboolean.org
