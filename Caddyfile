@@ -57,10 +57,10 @@
 		reverse_proxy {env.DOCKER_LXC_IP}:2283
 	}
 
-	@docker-gpu host docker-gpu.home.getboolean.dev docker-gpu.home.getboolean.org
-	handle @docker-gpu {
-		reverse_proxy {env.GPU_VM_IP}:5001
-	}
+	# @docker-gpu host docker-gpu.home.getboolean.dev docker-gpu.home.getboolean.org
+	# handle @docker-gpu {
+	# 	reverse_proxy {env.GPU_VM_IP}:5001
+	# }
 	
 	@jellyfin host jellyfin.getboolean.dev jellyfin.getboolean.org jellyfin.home.getboolean.dev jellyfin.home.getboolean.org
 	handle @jellyfin {
